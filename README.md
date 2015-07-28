@@ -1,5 +1,6 @@
 # Webhooks for Umbraco
 
+[![Build status](https://img.shields.io/appveyor/ci/leekelleher/umbraco-webhooks.svg)](https://ci.appveyor.com/project/leekelleher/umbraco-webhooks)
 
 
 > *Note:* Webhooks for Umbraco has been developed against **Umbraco v7.2.6** and will support that version and above.
