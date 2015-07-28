@@ -2,10 +2,10 @@
 <umbPackage>
 	<info>
 		<package>
-			<name>Webhooks4Umbraco</name>
+			<name></name>
 			<version>0.0.0</version>
 			<license url=""></license>
-			<url>http://our.umbraco.org</url>
+			<url></url>
 			<requirements>
 				<major>0</major>
 				<minor>0</minor>
@@ -13,8 +13,8 @@
 			</requirements>
 		</package>
 		<author>
-			<name>Umbrella Inc</name>
-			<website>http://www.umbrellainc.co.uk</website>
+			<name></name>
+			<website></website>
 		</author>
 		<readme><![CDATA[]]></readme>
 	</info>
