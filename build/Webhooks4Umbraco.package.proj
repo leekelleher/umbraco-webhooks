@@ -14,7 +14,14 @@
   <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
   <Import Project="$(MSBuildUmbracoTasksPath)\MSBuild.Umbraco.Tasks.Targets" />
 
-  <Import Project="_Props.proj" />
+  <!-- PATHS -->
+	<PropertyGroup>
+		<BuildConfig>Release</BuildConfig>
+		<RootDir>$(MSBuildProjectDirectory)\..</RootDir>
+		<BuildDir>$(MSBuildProjectDirectory)</BuildDir>
+		<BuildOutputDir>$(MSBuildProjectDirectory)\output</BuildOutputDir>
+		<ArtifactsDir>$(RootDir)\artifacts</ArtifactsDir>
+	</PropertyGroup>
 
   <!-- 
   	****************************************
@@ -36,9 +43,17 @@
   	* TARGETS
 	****************************************
   -->
+  
+  <!-- CLEAN -->
+	<Target Name="Clean">
+		<RemoveDir Directories="$(BuildOutputDir)" Condition="Exists('$(BuildOutputDir)')" />
+		<RemoveDir Directories="$(ArtifactsDir)" Condition="Exists('$(ArtifactsDir)')" />
+		<MakeDir Directories="$(BuildOutputDir)" />
+		<MakeDir Directories="$(ArtifactsDir)" />
+	</Target>
 
   <!-- UPDATE ASSEMBLEY VERSION -->
-  <Target Name="UpdateAssemblyInfo">
+  <Target Name="UpdateAssemblyInfo" DependsOnTargets="Clean">
     <FileUpdate
           Encoding="ASCII"
           Files="$(ProjectDir)\Properties\AssemblyInfo.cs"
