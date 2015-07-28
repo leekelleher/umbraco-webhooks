@@ -18,7 +18,7 @@
 	<PropertyGroup>
 		<ProjectName>Our.Umbraco.Webhooks4Umbraco</ProjectName>
 		<PackageName>Webhooks4Umbraco</PackageName>
-		<MinUmbracoVersion>7.2.6</MinUmbracoVersion>
+		<MinUmbracoVersion>7.2.0</MinUmbracoVersion>
 		<Readme>Webhooks for Umbraco</Readme>
 		<AuthorName>Matt Brailsford, Lee Kelleher</AuthorName>
 		<AuthorUrl>https://github.com/leekelleher/umbraco-webhooks/graphs/contributors</AuthorUrl>
