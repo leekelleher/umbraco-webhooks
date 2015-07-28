@@ -8,6 +8,7 @@ using log4net;
 using Newtonsoft.Json;
 using Our.Umbraco.Webhooks4Umbraco.Events;
 using Our.Umbraco.Webhooks4Umbraco.Models;
+using Umbraco.Core.Logging;
 using Umbraco.Web;
 
 namespace Our.Umbraco.Webhooks4Umbraco.Services
@@ -178,7 +179,15 @@ namespace Our.Umbraco.Webhooks4Umbraco.Services
                     // Send webhook request
                     var dataString = JsonConvert.SerializeObject(data);
                     client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                    client.UploadString(new Uri(handler.WebhookUrl), "POST", dataString);
+
+                    try
+                    {
+                        client.UploadString(new Uri(handler.WebhookUrl), "POST", dataString);
+                    }
+                    catch (WebException ex)
+                    {
+                        LogHelper.Error<EventService>("There is an error on the webhook end-point.", ex);
+                    }
                 }
             }
         }
