@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Clean" ToolsVersion="4.0">
+
+	<Import Project="_Props.proj" />
+
+	<!-- CLEAN -->
+	<Target Name="Clean">
+		<RemoveDir Directories="$(BuildOutputDir)" Condition="Exists('$(BuildOutputDir)')" />
+		<RemoveDir Directories="$(ArtifactsDir)" Condition="Exists('$(ArtifactsDir)')" />
+		<MakeDir Directories="$(BuildOutputDir)" />
+		<MakeDir Directories="$(ArtifactsDir)" />
+	</Target>
+
+</Project>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Package">
+
+  <!-- 
+  	****************************************
+  	* IMPORTS
+	****************************************
+  -->
+  <PropertyGroup>
+    <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\Tools\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
+    <MSBuildUmbracoTasksPath>$(MSBuildProjectDirectory)\Tools\MSBuildUmbracoTasks</MSBuildUmbracoTasksPath>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
+  <Import Project="$(MSBuildUmbracoTasksPath)\MSBuild.Umbraco.Tasks.Targets" />
+
+  <Import Project="_Props.proj" />
+
+  <!-- 
+  	****************************************
+  	* PROPERTIES
+	****************************************
+  -->
+  <PropertyGroup>
+    <PackageVersion>1.0</PackageVersion>
+    <BuildConfiguration>Release</BuildConfiguration>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ProjectName>Pegasus.Webhooks</ProjectName>
+  	<ProjectDir>$(RootDir)\Src\$(ProjectName)</ProjectDir>
+  </PropertyGroup>
+  
+  <!-- 
+  	****************************************
+  	* TARGETS
+	****************************************
+  -->
+
+  <!-- UPDATE ASSEMBLEY VERSION -->
+  <Target Name="UpdateAssemblyInfo">
+    <FileUpdate
+          Encoding="ASCII"
+          Files="$(ProjectDir)\Properties\AssemblyInfo.cs"
+          Regex="AssemblyVersion\(&quot;.*&quot;\)\]"
+          ReplacementText="AssemblyVersion(&quot;$(PackageVersion)&quot;)]" />
+    <FileUpdate
+          Encoding="ASCII"
+          Files="$(ProjectDir)\Properties\AssemblyInfo.cs"
+          Regex="AssemblyFileVersion\(&quot;.*&quot;\)\]"
+          ReplacementText="AssemblyFileVersion(&quot;$(PackageVersion)&quot;)]" />
+  </Target>
+  
+  <!-- COMPILE -->
+  <Target Name="Compile" DependsOnTargets="UpdateAssemblyInfo">
+	  <MSBuild Projects="$(ProjectDir)\$(ProjectName).csproj" Properties="Configuration=$(BuildConfig);" />
+  </Target>
+
+  <!-- PREPAIRE FILES --> 
+  <Target Name="PrepairFiles" DependsOnTargets="Compile">
+    <ItemGroup>
+      <BinFiles Include="$(ProjectDir)\bin\$(BuildConfig)\$(ProjectName).dll" />
+      <WebFiles Include="$(ProjectDir)\Web\UI\**\*.*" />
+      <PackageFile Include="$(BuildDir)\Pegasus.package.xml;" />  
+    </ItemGroup>
+	  <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(BuildOutputDir)\$(ProjectName)\bin" />
+	  <Copy SourceFiles="@(WebFiles)" DestinationFolder="$(BuildOutputDir)\$(ProjectName)\%(RecursiveDir)" />
+	  <Copy SourceFiles="@(PackageFile)" DestinationFiles="$(BuildOutputDir)\$(ProjectName)\Package.xml" />
+  </Target> 
+  
+  <!-- MANIFEST -->
+  <Target Name="Manifest" DependsOnTargets="PrepairFiles">
+	  <ItemGroup>
+      <UmbracoManifestFiles Include="$(BuildOutputDir)\$(ProjectName)\**\*" Exclude="$(BuildOutputDir)\$(ProjectName)\Package.xml" />
+    </ItemGroup>
+	  <MSBuild.Umbraco.Tasks.ManifestUpdate ManifestFile="$(BuildOutputDir)\$(ProjectName)\Package.xml"
+		  WorkingDirectory="$(BuildOutputDir)\$(ProjectName)"
+		  PackageVersion="$(PackageVersion)"
+	    Files="@(UmbracoManifestFiles)" />
+  </Target> 
+    
+  <!-- PACKAGE -->
+  <Target Name="Package" DependsOnTargets="Manifest">
+	  <ItemGroup>
+        <UmbracoPackageFiles Include="$(BuildOutputDir)\$(ProjectName)\**\*.*"  />
+	  </ItemGroup>
+	  <MSBuild.Umbraco.Tasks.Package ManifestFile="$(BuildOutputDir)\$(ProjectName)\Package.xml"
+       WorkingDirectory="$(BuildOutputDir)\$(ProjectName)"
+       OutputDirectory="$(ArtifactsDir)"
+	     Files="@(UmbracoPackageFiles)" /> 
+  </Target> 
+  
+</Project>

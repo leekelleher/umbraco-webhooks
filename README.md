@@ -1,2 +1,1 @@
-# umbraco-webhooks
-Webhooks for Umbraco
+# Webhooks for Umbraco

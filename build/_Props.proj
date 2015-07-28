@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Clean" ToolsVersion="4.0">
+
+	<!-- PATHS -->
+	<PropertyGroup>
+		<BuildConfig>Release</BuildConfig>
+		<RootDir>$(MSBuildProjectDirectory)\..</RootDir>
+		<BuildDir>$(MSBuildProjectDirectory)</BuildDir>
+		<BuildOutputDir>$(MSBuildProjectDirectory)\output</BuildOutputDir>
+		<ArtifactsDir>$(RootDir)\artifacts</ArtifactsDir>
+	</PropertyGroup>
+
+</Project>

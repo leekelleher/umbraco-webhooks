@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Our.Umbraco.Webhooks4Umbraco", "Our.Umbraco.Webhooks4Umbraco\Our.Umbraco.Webhooks4Umbraco.csproj", "{2DDCAF4C-D435-4CBA-BDC3-637FBFA4E470}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8F053295-5339-472C-A118-AC21BC09B689}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UmbracoCms.7.2.6", "http://localhost:63588", "{AE5A8B09-AC93-43BE-A2C6-6889AA131DC3}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_63588"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\Sandbox\Umbraco\UmbracoCms.7.2.6\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63588\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_63588"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\Sandbox\Umbraco\UmbracoCms.7.2.6\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63588\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\..\..\..\Sandbox\Umbraco\UmbracoCms.7.2.6\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pegasus.Webhooks", "Pegasus.Webhooks\Pegasus.Webhooks.csproj", "{C66D197B-BDB3-47A1-A0C7-EECE223D90B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DDCAF4C-D435-4CBA-BDC3-637FBFA4E470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DDCAF4C-D435-4CBA-BDC3-637FBFA4E470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DDCAF4C-D435-4CBA-BDC3-637FBFA4E470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DDCAF4C-D435-4CBA-BDC3-637FBFA4E470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE5A8B09-AC93-43BE-A2C6-6889AA131DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE5A8B09-AC93-43BE-A2C6-6889AA131DC3}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{C66D197B-BDB3-47A1-A0C7-EECE223D90B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C66D197B-BDB3-47A1-A0C7-EECE223D90B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C66D197B-BDB3-47A1-A0C7-EECE223D90B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C66D197B-BDB3-47A1-A0C7-EECE223D90B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
