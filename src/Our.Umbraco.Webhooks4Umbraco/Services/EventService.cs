@@ -74,10 +74,12 @@ namespace Our.Umbraco.Webhooks4Umbraco.Services
             foreach (var evt in handler.Events)
             {
                 var typeInf = Type.GetType(evt.Type);
-                if (typeInf == null) continue;
+                if (typeInf == null)
+                    continue;
 
                 var evtInf = typeInf.GetEvent(evt.Name);
-                if (evtInf == null || _hooks.ContainsKey(evtInf.Name)) continue;
+                if (evtInf == null || _hooks.ContainsKey(evtInf.Name))
+                    continue;
 
                 var parameterCount = EventParameterCount(evtInf);
                 var proxy = new EventProxy(OnEvent, typeInf, evtInf.Name);
@@ -120,10 +122,11 @@ namespace Our.Umbraco.Webhooks4Umbraco.Services
 
         public void OnEvent(object sender, string eventName, object[] args)
         {
-            foreach(var handler in Webhooks4UmbracoConfig.Instance.Handlers)
+            foreach (var handler in Webhooks4UmbracoConfig.Instance.Handlers)
             {
                 var evt = handler.Events.FirstOrDefault(e => e.Name == eventName && ((Type)sender) == Type.GetType(e.Type));
-                if(evt == null) continue;
+                if (evt == null)
+                    continue;
 
                 using (var client = new WebClient())
                 {
@@ -135,7 +138,7 @@ namespace Our.Umbraco.Webhooks4Umbraco.Services
                         if (argConverterType != null && typeof(ArgTypeConverter).IsAssignableFrom(argConverterType))
                         {
                             var converter = (ArgTypeConverter)Activator.CreateInstance(argConverterType);
-                            foreach (var arg in args)
+                            foreach (var arg in args.Where(x => x != null))
                             {
                                 if (converter.CanConvertFrom(arg.GetType()))
                                 {
@@ -165,9 +168,11 @@ namespace Our.Umbraco.Webhooks4Umbraco.Services
                     var currentUser = UmbracoContext.Current.Security.CurrentUser;
 
                     // Create webhook data object
-                    var data = new {
+                    var data = new
+                    {
                         @event = evt,
-                        user = new {
+                        user = new
+                        {
                             id = currentUser != null ? currentUser.Id : 0,
                             name = currentUser != null ? currentUser.Name : null,
                             email = currentUser != null ? currentUser.Email : null
