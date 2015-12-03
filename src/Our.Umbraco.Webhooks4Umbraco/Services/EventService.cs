@@ -165,7 +165,9 @@ namespace Our.Umbraco.Webhooks4Umbraco.Services
                     }
 
                     // Get current user info
-                    var currentUser = UmbracoContext.Current.Security.CurrentUser;
+                    var currentUser = UmbracoContext.Current != null
+                        ? UmbracoContext.Current.Security.CurrentUser
+                        : null;
 
                     // Create webhook data object
                     var data = new
