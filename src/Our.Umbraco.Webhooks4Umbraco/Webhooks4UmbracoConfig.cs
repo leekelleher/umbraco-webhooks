@@ -11,9 +11,10 @@ namespace Our.Umbraco.Webhooks4Umbraco
         private static readonly Lazy<Config> _instance = new Lazy<Config>(() =>
         {
             var filePath = IOHelper.MapPath(SystemDirectories.Config + "/Webhooks4Umbraco.config");
-            var accounts = new FileInfo(filePath).XmlDeserialize<Config>()
-                ?? new Config();
+            var accounts = new FileInfo(filePath).XmlDeserialize<Config>() ?? new Config();
+
             accounts.FilePath = filePath;
+
             return accounts;
         });
 
