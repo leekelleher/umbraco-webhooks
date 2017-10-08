@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Our.Umbraco.Webhooks4Umbraco")]
 [assembly: AssemblyDescription("Webhooks for Umbraco")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("The Umbraco Community")]
+[assembly: AssemblyCompany("Umbrella Inc")]
 [assembly: AssemblyProduct("Our.Umbraco.Webhooks4Umbraco")]
-[assembly: AssemblyCopyright("Copyright \xa9 The Umbraco Community 2015")]
+[assembly: AssemblyCopyright("Copyright \xa9 Umbrella Inc, The Umbraco Community 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

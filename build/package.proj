@@ -31,7 +31,7 @@
 	<PropertyGroup>
 		<PackageId>Our.Umbraco.Webhooks4Umbraco</PackageId>
 		<NuGetPackageName>Webhooks for Umbraco</NuGetPackageName>
-		<Copyright>Copyright &#169; 2015 Matt Brailsford, Lee Kelleher, Our Umbraco and other contributors</Copyright>
+		<Copyright>Copyright &#169; 2015 Umbrella Inc, Our Umbraco and other contributors</Copyright>
 		<Owners>Matt Brailsford, Lee Kelleher</Owners>
 		<IconUrl>https://pbs.twimg.com/profile_images/459035051645083648/kM6uyYA1.png</IconUrl>
 		<Tags>umbraco webhooks</Tags>
