@@ -298,7 +298,6 @@
     <Compile Include="Services\EventService.cs" />
     <Compile Include="CustomDataResolver.cs" />
     <Compile Include="Webhooks4UmbracoConfig.cs" />
-    <Compile Include="Web\Controllers\Webhooks4UmbracoApiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

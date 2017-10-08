@@ -2,9 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-
 using Our.Umbraco.Webhooks4Umbraco.Extensions;
-
 using Umbraco.Core.Events;
 using Umbraco.Core.Models;
 

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Our.Umbraco.Webhooks4Umbraco.Models

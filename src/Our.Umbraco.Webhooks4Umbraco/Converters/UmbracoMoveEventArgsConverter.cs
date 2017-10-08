@@ -2,9 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-
 using Our.Umbraco.Webhooks4Umbraco.Extensions;
-
 using Umbraco.Core.Events;
 using Umbraco.Core.Models;
 
@@ -32,7 +30,8 @@ namespace Our.Umbraco.Webhooks4Umbraco.Converters
 
             return new
             {
-                entities = typedValue.MoveInfoCollection.Select(x => new {
+                entities = typedValue.MoveInfoCollection.Select(x => new
+                {
                     entity = this.ConvertFrom(context, culture, x.Entity),
                     newParentId = x.NewParentId,
                     originalPath = x.OriginalPath

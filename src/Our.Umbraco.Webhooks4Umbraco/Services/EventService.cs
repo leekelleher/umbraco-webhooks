@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Reflection;
-using log4net;
 using Newtonsoft.Json;
 using Our.Umbraco.Webhooks4Umbraco.Events;
 using Our.Umbraco.Webhooks4Umbraco.Models;
@@ -17,30 +15,6 @@ namespace Our.Umbraco.Webhooks4Umbraco.Services
     {
         private readonly static Lazy<EventService> _instance = new Lazy<EventService>(() => new EventService());
 
-        //private readonly Lazy<IEnumerable<EventDefinition>> _events = new Lazy<IEnumerable<EventDefinition>>(() =>
-        //{
-        //    var events = new List<EventDefinition>();
-
-        //    var assemblies = AppDomain
-        //        .CurrentDomain
-        //        .GetAssemblies();
-
-        //    foreach (var t in assemblies.SelectMany(assembly => assembly.GetTypes()))
-        //    {
-        //        events.AddRange(t.GetEvents(BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
-        //            .Select(info => new EventDefinition
-        //            {
-        //                FullName = t.FullName + "." + info.Name, 
-        //                EventName = info.Name, 
-        //                TypeName = t.FullName, 
-        //                AssemblyName = t.Assembly.GetName().Name, 
-        //                AssemblyQualifiedTypeName = t.AssemblyQualifiedName
-        //            }));
-        //    }
-
-        //    return events;
-        //});
-
         private Dictionary<string, Delegate> _hooks = new Dictionary<string, Delegate>();
 
         protected EventService()
@@ -50,16 +24,6 @@ namespace Our.Umbraco.Webhooks4Umbraco.Services
         {
             get { return _instance.Value; }
         }
-
-        //public virtual IEnumerable<EventDefinition> GetAllEvents()
-        //{
-        //    return _events.Value;
-        //}
-
-        //public virtual IEnumerable<EventDefinition> SearchEvents(string term)
-        //{
-        //    return _events.Value;
-        //}
 
         public virtual void AttachEventHandlers()
         {

@@ -2,7 +2,6 @@
 using System.IO;
 using Our.Umbraco.Webhooks4Umbraco.Extensions;
 using Our.Umbraco.Webhooks4Umbraco.Models;
-
 using Umbraco.Core.IO;
 
 namespace Our.Umbraco.Webhooks4Umbraco
