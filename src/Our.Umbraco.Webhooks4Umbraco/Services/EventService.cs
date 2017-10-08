@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Text;
 using Newtonsoft.Json;
 using Our.Umbraco.Webhooks4Umbraco.Events;
 using Our.Umbraco.Webhooks4Umbraco.Models;
@@ -150,6 +151,23 @@ namespace Our.Umbraco.Webhooks4Umbraco.Services
                     // Send webhook request
                     var dataString = JsonConvert.SerializeObject(data);
                     client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+
+                    // Add credentials - if available
+                    var credentials = string.Empty;
+                    if (!string.IsNullOrWhiteSpace(handler.WebhookCredentials))
+                    {
+                        // Assumes the credentials are already Base64 encoded
+                        credentials = handler.WebhookCredentials;
+                    }
+                    else if (!string.IsNullOrWhiteSpace(handler.WebhookUserName) && !string.IsNullOrWhiteSpace(handler.WebhookPassword))
+                    {
+                        credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Concat(handler.WebhookUserName, ":", handler.WebhookPassword)));
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(credentials))
+                    {
+                        client.Headers[HttpRequestHeader.Authorization] = string.Format("Basic {0}", credentials);
+                    }
 
                     try
                     {
